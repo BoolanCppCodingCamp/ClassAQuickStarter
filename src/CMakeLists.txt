@@ -14,14 +14,14 @@ FetchContent_MakeAvailable(Catch2)
 
 set(CMAKE_CXX_CLANG_TIDY
   clang-tidy-10;
-  -format-sytle='file';
+  -format-style='file';
   -checks=cppcoreguidelines*
-  -header-file=${CMAKE_CURRENT_SOURCE_DIR};
+  -header-filter=${CMAKE_CURRENT_SOURCE_DIR};
 )
 
 include_directories(${PROJECT_SOURCE_DIR})
-add_executable(hello main.cpp)
-add_executable(tests test.cpp)
+add_executable(hello main.cpp A.cpp)
+add_executable(tests test.cpp A.cpp)
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
